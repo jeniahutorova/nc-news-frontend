@@ -11,15 +11,15 @@ const ArticleComments = () => {
         })
       }, [articleId]);
       return(
-        <div className="comments">
+        <div className="card-body text-center">
             {comments.map((comment)=> (
                <div key={comment.comment_id} className="comment">
-               <p>{comment.body}</p>
                <p>Author: {comment.author}</p>
+               <p>{comment.body}</p>
                <p>Votes: {comment.votes}</p>
            </div>
             ))}
-            
+
         </div>
       )
 }
