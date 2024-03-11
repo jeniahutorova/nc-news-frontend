@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 const ArticleCard = ({article_id, topic, title, img_url, author, votes}) => {
 return (
     <div className="container">
@@ -10,6 +11,7 @@ return (
               <p>Topic: {topic}</p>
               <img src={img_url} alt={title} className="img-fluid" />
               <p>Votes: {votes}</p>
+              <Link to={`/articles/${article_id}`}>Read more</Link>
             </div>
           </div>
         </div>
