@@ -7,3 +7,13 @@ return axios.get(`${baseURL}articles`).then(({data}) => {
     return data.articles
 })
 }
+export const fetchArticlesByID = (id) => {
+    return axios.get(`${baseURL}articles/${id}`).then(({data})=>{
+        return data
+    })
+}
+export const fetchCommentsByArticleId = (id) => {
+    return axios.get(`${baseURL}articles/${id}/comments`).then(({data})=> {
+        return data
+    })
+}
