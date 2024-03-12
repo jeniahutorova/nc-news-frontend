@@ -5,10 +5,9 @@ import Homepage from '../components/Homepage'
 import NavBar from '../components/NavBar'
 import ArticleList from '../components/ArticleList';
 import Article from '../components/Article';
-import ArticleWithComments from '../components/ArticleWithCommets';
 
 function App() {
-  const [article, setArticle] = useState([]);
+  const [article, setArticle] = useState(null);
  return (
   <Router>
   <>
@@ -17,7 +16,6 @@ function App() {
       <Route path="/" element={<Homepage />} />
       <Route path="/articles" element={<ArticleList />} />
       <Route path="/articles/:articleId" element={<Article article={article} setArticle ={setArticle}/>} />
-      <Route path="/articles/:articleId/comments" element={<ArticleWithComments article={article}/>}/>
     </Routes>
   </>
 </Router>

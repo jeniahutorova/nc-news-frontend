@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { fetchCommentsByArticleId } from "../api";
 import { useState,useEffect } from "react";
+import CommentForm from "./CommentForm";
 
 const ArticleComments = () => {
     const {articleId} = useParams()
@@ -11,7 +12,7 @@ const ArticleComments = () => {
         })
       }, [articleId]);
       return(
-        <div className="card-body text-center">
+                <div className="card-body text-center">
             {comments.map((comment)=> (
                <div key={comment.comment_id} className="comment">
                <p>Author: {comment.author}</p>
@@ -19,8 +20,9 @@ const ArticleComments = () => {
                <p>Votes: {comment.votes}</p>
            </div>
             ))}
-
+            <CommentForm articleId={articleId} setComments={setComments}/>
         </div>
+        
       )
 }
 export default ArticleComments

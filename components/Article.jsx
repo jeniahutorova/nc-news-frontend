@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticlesByID,} from '../api';
-import { Link } from 'react-router-dom';
-
-
-
+import ArticleWithComments from './ArticleWithCommets';
 
 const Article = ({article, setArticle}) => {
     const { articleId } = useParams();
@@ -18,6 +15,7 @@ const Article = ({article, setArticle}) => {
 
       if (!article) {
         return <div>Loading...</div>;
+        
     }
      const handleVote = (voteType) => {
         const updatedVotes = voteType === 'up' ? vote + 1 : vote - 1
@@ -37,9 +35,7 @@ const Article = ({article, setArticle}) => {
               <button type="button" className="btn btn-outline-primary" onClick={()=> handleVote('down')}>Downvote</button>
 
         </div>
-        {article.comment_count === 0 ? (<p> No comments found </p>) : <Link to={`/articles/${articleId}/comments`} >
-        Comments
-            </Link>}
+        {article.comment_count === 0 ? (<p> No comments found </p>) : <ArticleWithComments/>}
     </>
     )
 
