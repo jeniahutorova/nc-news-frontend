@@ -8,7 +8,7 @@ import Article from '../components/Article';
 import ArticleWithComments from '../components/ArticleWithCommets';
 
 function App() {
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState([]);
  return (
   <Router>
   <>

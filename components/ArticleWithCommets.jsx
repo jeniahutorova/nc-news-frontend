@@ -14,7 +14,7 @@ const ArticleWithComments = ({article}) => {
             <p>{article.body}</p>
             <img src={article.article_img_url} alt={article.title} className="img-fluid" />
             <p>Votes:{article.votes}</p>
-            <button type="button" class="btn btn-outline-primary" onClick={toggleComments}> {showComments ? "Hide comments" : "Show comments"}</button>
+            <button type="button" className="btn btn-outline-primary" onClick={toggleComments}> {showComments ? "Hide comments" : "Show comments"}</button>
             {showComments && <ArticleComments/>}
         </div>
         
