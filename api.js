@@ -15,5 +15,7 @@ export const fetchArticlesByID = (id) => {
 export const fetchCommentsByArticleId = (id) => {
     return axios.get(`${baseURL}articles/${id}/comments`).then(({data})=> {
         return data
+    }).catch((err)=> {
+        setErr("'Failed to fetch article. Please try again later.'")
     })
 }
