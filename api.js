@@ -19,3 +19,12 @@ export const fetchCommentsByArticleId = (id) => {
         setErr("'Failed to fetch article. Please try again later.'")
     })
 }
+
+export const postComment = (articleId, comment) => {
+    console.log(articleId, comment)
+    return axios.post(`${baseURL}articles/${articleId}/comments`, comment)
+      .then(({ data }) => {
+        console.log(data)
+        return data.comment
+      })
+};
