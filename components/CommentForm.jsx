@@ -36,7 +36,7 @@ return(
         <label htmlFor="comment">Comment:</label>
         <input type="text" id="comment" name="body" onChange={handleChange} value={formData.body} required/>
 
-        <button type="submit">{isLoading ? "Submitting" : "Submit" }</button>
+        <button type="submit" className="btn btn-outline-primary">{isLoading ? "Submitting" : "Submit" }</button>
         
     </form>
     {success && (<p>Form submitted successfully</p>)}
