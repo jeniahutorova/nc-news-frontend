@@ -21,10 +21,17 @@ export const fetchCommentsByArticleId = (id) => {
 }
 
 export const postComment = (articleId, comment) => {
-    console.log(articleId, comment)
     return axios.post(`${baseURL}articles/${articleId}/comments`, comment)
       .then(({ data }) => {
-        console.log(data)
         return data.comment
       })
-};
+}
+
+export const deleteComment =(commentId) => {
+    return axios.delete(`${baseURL}comments/${commentId}`)
+}
+export const fetchUsers = () => {
+    return axios.get(`${baseURL}users`).then(({data})=> {
+        return data.users
+    })
+}
