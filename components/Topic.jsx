@@ -2,16 +2,14 @@ import { useEffect, useState} from "react"
 import { fetchTopics } from "../api"
 
 
-const Topic = ({selectTopic, setSelectTopic}) => {
+
+const Topic = ({selectTopic, handleTopicChange}) => {
     const [topics, setTopics] = useState([])
 useEffect(()=> {
     fetchTopics().then((topics)=> {
         setTopics(topics)
     })
 }, [setTopics])
-const handleTopicChange = (e) => {
-    setSelectTopic(e.target.value)
-}
 return(
     <div>
     <select 
