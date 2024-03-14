@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import {fetchArticles} from "../api"
 import ArticleCard from "./ArticleCard";
-const ArticleList = () => {
+import Topic from "./Topic";
+const ArticleList = ({selectTopic, setSelectTopic}) => {
     const [articles, setArticles] = useState([]);
     const[isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         setIsLoading(true)
-        fetchArticles().then((articles) => {
+        fetchArticles(selectTopic).then((articles) => {
           setArticles(articles)
           setIsLoading(false);
         })
-      }, []);
+      }, [selectTopic]);
     return(
         <div>
             {isLoading ? (<p> Loading ...</p>) :
             (
+                <>
+                <Topic selectTopic={selectTopic} setSelectTopic={setSelectTopic}/>
                 <ul>
                     {articles.map((article)=>(
                         <ArticleCard 
@@ -28,8 +31,10 @@ const ArticleList = () => {
                         ></ArticleCard>
                     ))}
                 </ul>
+                </>
             )}
         </div>
+
         
     )
 }
