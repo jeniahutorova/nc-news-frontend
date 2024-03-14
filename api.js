@@ -2,17 +2,27 @@ import axios from "axios";
 
 const baseURL = "https://nc-news-o4n5.onrender.com/api/";
 
-export const fetchArticles = (topic) => {
-  if (!topic) {
-    return axios.get(`${baseURL}articles`).then(({ data }) => {
-      return data.articles;
-    });
-  } else {
-    return axios.get(`${baseURL}articles?topic=${topic}`).then(({ data }) => {
-      return data.articles;
-    });
-  }
+export const fetchArticles = (topic, sortBy, sortOrder) => {
+    let url = `${baseURL}articles`;
+   
+    if (sortBy) {
+        url += `?sort_by=${sortBy}`;
+        if (sortOrder) {
+            url += `&order=${sortOrder}`;
+        }
+    } else {
+        url += `&order=desc`;
+    }
+
+    if (topic) {
+        url += `&topic=${topic}`;
+    }
+    return axios.get(url)
+        .then(({ data }) => {
+            return data.articles;
+        });
 };
+
 
 export const fetchArticlesByID = (id) => {
   return axios.get(`${baseURL}articles/${id}`).then(({ data }) => {
