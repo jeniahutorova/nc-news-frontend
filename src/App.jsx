@@ -12,6 +12,7 @@ import UserList from '../components/UserList';
 function App() {
   const [article, setArticle] = useState(null);
   const [user, setUser] = useState({username:""})
+  const [selectTopic, setSelectTopic] = useState("")
  return (
   <UserContext.Provider value={{user,setUser}}>
   <Router>
@@ -19,7 +20,7 @@ function App() {
     <NavBar />
     <Routes> 
       <Route path="/" element={<Homepage />} />
-      <Route path="/articles" element={<ArticleList />} />
+      <Route path="/articles" element={<ArticleList selectTopic ={selectTopic} setSelectTopic={setSelectTopic} />} />
       <Route path="/articles/:articleId" element={<Article article={article} setArticle ={setArticle}/>} />
       <Route path="/users" element={<UserList />} />
     </Routes>
