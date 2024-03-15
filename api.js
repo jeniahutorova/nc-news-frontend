@@ -29,6 +29,13 @@ export const fetchArticlesByID = (id) => {
     return data;
   });
 };
+export const patchArticle = (id, vote) => {
+    return axios.patch(`${baseURL}articles/${id}`,{inc_votes: vote})
+    .then(({data})=> {
+        return data.article
+    })
+}
+
 export const fetchCommentsByArticleId = (id) => {
   return axios
     .get(`${baseURL}articles/${id}/comments`)
@@ -36,7 +43,7 @@ export const fetchCommentsByArticleId = (id) => {
       return data;
     })
     .catch((err) => {
-      setErr("'Failed to fetch article. Please try again later.'");
+      throwErr("'Failed to fetch article. Please try again later.'");
     });
 };
 

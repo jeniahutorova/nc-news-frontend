@@ -12,7 +12,15 @@ const ArticleComments = () => {
   const {user} = useContext(UserContext)
   useEffect(() => {
     fetchCommentsByArticleId(articleId).then((comments) => {
-      setComments(comments);
+      setComments(comments)
+      setError(null);
+    }).catch((error) => {
+      if (error.response && error.response.status === 400) {
+        setError('Article not found. Please check the article ID.');
+      } else {
+        setError('An error occurred while fetching the article.');
+      }
+      setLoading(false);
     });
   }, [articleId]);
   const handleDeleteComment = (commentId) => {

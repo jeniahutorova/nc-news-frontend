@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { postComment } from "../api"
+import { UserContext } from "../context/User"
 
 const CommentForm = ({articleId, setComments}) => {
 const [formData, setFormData] = useState({username:"", body:""})
 const [isLoading, setIsLoading] = useState(false)
 const [success, setSuccess] = useState(false)
-    
+const {user} = useContext(UserContext)
 const handleChange = (e) => {
 setFormData({...formData, [e.target.name === "name" ? "username" : e.target.name]: e.target.value})
 }
