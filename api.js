@@ -42,9 +42,6 @@ export const fetchCommentsByArticleId = (id) => {
     .then(({ data }) => {
       return data;
     })
-    .catch((err) => {
-      throwErr("'Failed to fetch article. Please try again later.'");
-    });
 };
 
 export const postComment = (articleId, comment) => {

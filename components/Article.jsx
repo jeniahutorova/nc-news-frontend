@@ -3,14 +3,24 @@ import { useParams } from 'react-router-dom';
 import { fetchArticlesByID, patchArticle } from '../api';
 import ArticleWithComments from './ArticleWithCommets';
 
-const Article = ({ article, setArticle }) => {
+const Article = ({ article, setArticle, error, setError}) => {
     const { articleId } = useParams();
     const [vote, setVote] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         fetchArticlesByID(articleId).then(({ article }) => {
             setArticle(article)
-        });
+            setLoading(false); 
+        }).catch((error)=> {
+            if (error.response && error.response.status === 400) {
+                setError(`Bad Request: Article with ID "${articleId}" not found.`);
+            } else {
+                setError('Failed to fetch article. Please try again later.');
+            }
+            setLoading(false);
+        })
     }, [articleId, setArticle]);
 
     const handleVote = () => {
@@ -21,13 +31,20 @@ const Article = ({ article, setArticle }) => {
            setArticle(updatedArticle);
         })
         .catch((error) => {
-            setErr("Oops, something went wrong! Try again later!")
+            if (error.response && error.response.status === 400) {
+                setError(`Bad Request: Failed to vote on article with ID "${articleId}".`);
+            } else {
+                setError('Failed to vote. Please try again later.');
+            }
             setVote(vote);
         });
     };
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     if (!article) {
-        return <div>Loading...</div>;
+        return <div>No article found</div>;
     }
 
     return (
@@ -46,7 +63,7 @@ const Article = ({ article, setArticle }) => {
             {article.comment_count === 0 ? (
                 <p> No comments found </p>
             ) : (
-                <ArticleWithComments />
+                <ArticleWithComments error={error} setError={setError}/>
             )}
         </>
     );
