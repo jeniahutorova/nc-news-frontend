@@ -43,24 +43,26 @@ const CommentForm = ({ articleId, setComments }) => {
   return (
     <>
       {!user.username ? (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Username:</label>
+        <form onSubmit={handleSubmit} className="mb-3">
+          <label htmlFor="name" className="form-label">Username:</label>
           <input
             type="text"
             id="name"
             name="username"
             onChange={handleChange}
             value={formData.username}
+            className="form-control"
             required
           />
 
-          <label htmlFor="comment">Comment:</label>
+          <label htmlFor="comment" className="form-label">Comment:</label>
           <input
             type="text"
             id="comment"
             name="body"
             onChange={handleChange}
             value={formData.body}
+            className="form-control"
             required
           />
 
@@ -70,23 +72,25 @@ const CommentForm = ({ articleId, setComments }) => {
           {success && <p>Form submitted successfully</p>}
         </form>
       ) : (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Username:</label>
+        <form onSubmit={handleSubmit} className="mb-3">
+            <label htmlFor="name" className="form-label">Username:</label>
             <input
             type="text"
             id="name"
             name="username"
             onChange={handleChange}
             value={user.username}
+            className="form-control"
             readOnly 
           />
-          <label htmlFor="comment">Comment:</label>
+          <label htmlFor="comment"  className="form-label">Comment:</label>
           <input
             type="text"
             id="comment"
             name="body"
             onChange={handleChange}
             value={formData.body}
+            className="form-control"
             required
           />
 

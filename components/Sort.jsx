@@ -8,12 +8,12 @@ const Sort = ({sortBy, sortOrder, handleSortChange}) => {
       };
 return (
     <div>
-      <select name="sortBy" value={sortBy} onChange={handleSortByChange} >
+      <select name="sortBy" value={sortBy} onChange={handleSortByChange} className="custom-select" >
         <option value="comment_count">Sort by comment count</option>
         <option value="created_at">Sort by date</option>
         <option value="votes">Sort by votes</option>
       </select>
-      <select name="sortOrder" value={sortOrder} onChange={handleSortOrderChange}>
+      <select name="sortOrder" value={sortOrder} onChange={handleSortOrderChange}  className="custom-select">
         <option value="asc">Ascending</option>
         <option value="desc">Descending</option>
       </select>
