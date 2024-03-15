@@ -19,7 +19,7 @@ return(
         <div className="card-body">
             <p className="card-title">{username}</p>
             <p className="card-text">{name}</p>
-            <button className="btn btn-primary" onClick={handleSignIn}>{user.username ? "Sign out" : "Sign in" }</button>
+            <button className="btn btn-primary" onClick={handleSignIn}>{signIn ? "Sign out" : "Sign in" }</button>
             {user.username === username && (<p> You are logged in as {username}!</p>)}
         </div>
   </div>

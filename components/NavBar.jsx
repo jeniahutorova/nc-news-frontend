@@ -29,6 +29,7 @@ const NavBar = () => {
         </Button>
 
         <>
+        {user.username ? (
           <Link
             to="/users"
             style={{
@@ -43,6 +44,17 @@ const NavBar = () => {
               style={{ marginLeft: "10px", cursor: "pointer" }}
             />
           </Link>
+        ):
+        (
+          <Button
+          color="inherit"
+          component={Link}
+          to="/users"
+          style={{ textDecoration: "none", marginRight: "10px" }}
+        >
+          Users
+        </Button>
+        )}
         </>
       </Toolbar>
     </AppBar>

@@ -42,65 +42,78 @@ const CommentForm = ({ articleId, setComments }) => {
 
   return (
     <>
-      {!user.username ? (
-        <form onSubmit={handleSubmit} className="mb-3">
-          <label htmlFor="name" className="form-label">Username:</label>
-          <input
-            type="text"
-            id="name"
-            name="username"
-            onChange={handleChange}
-            value={formData.username}
-            className="form-control"
-            required
-          />
-
-          <label htmlFor="comment" className="form-label">Comment:</label>
-          <input
-            type="text"
-            id="comment"
-            name="body"
-            onChange={handleChange}
-            value={formData.body}
-            className="form-control"
-            required
-          />
-
-          <button type="submit" className="btn btn-outline-primary">
-            {isLoading ? "Submitting" : "Submit"}
-          </button>
-          {success && <p>Form submitted successfully</p>}
-        </form>
-      ) : (
-        <form onSubmit={handleSubmit} className="mb-3">
+    {!user.username ? (
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="row">
+          <div className="col-md-12">
             <label htmlFor="name" className="form-label">Username:</label>
             <input
-            type="text"
-            id="name"
-            name="username"
-            onChange={handleChange}
-            value={user.username}
-            className="form-control"
-            readOnly 
-          />
-          <label htmlFor="comment"  className="form-label">Comment:</label>
-          <input
-            type="text"
-            id="comment"
-            name="body"
-            onChange={handleChange}
-            value={formData.body}
-            className="form-control"
-            required
-          />
-
-          <button type="submit" className="btn btn-outline-primary">
-            {isLoading ? "Submitting" : "Submit"}
-          </button>
-          {success && <p>Form submitted successfully</p>}
-        </form>
-      )}
-    </>
+              type="text"
+              id="name"
+              name="username"
+              onChange={handleChange}
+              value={formData.username}
+              className="form-control"
+              required
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="comment" className="form-label">Comment:</label>
+            <input
+              type="text"
+              id="comment"
+              name="body"
+              onChange={handleChange}
+              value={formData.body}
+              className="form-control"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit" className="btn btn-outline-primary">
+          {isLoading ? "Submitting" : "Submit"}
+        </button>
+        {success && <p>Form submitted successfully</p>}
+      </form>
+    ) : (
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="name" className="form-label">Username:</label>
+            <input
+              type="text"
+              id="name"
+              name="username"
+              onChange={handleChange}
+              value={user.username}
+              className="form-control"
+              readOnly
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="comment" className="form-label">Comment:</label>
+            <input
+              type="text"
+              id="comment"
+              name="body"
+              onChange={handleChange}
+              value={formData.body}
+              className="form-control"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit" className="btn btn-outline-primary">
+          {isLoading ? "Submitting" : "Submit"}
+        </button>
+        {success && <p>Form submitted successfully</p>}
+      </form>
+    )}
+  </>
   );
 };
 export default CommentForm;
