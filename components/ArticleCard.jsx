@@ -9,9 +9,11 @@ return (
               <h2>{title}</h2>
               <p>{author}</p>
               <p>Topic: {topic}</p>
-              <img src={img_url} alt={title} className="img-fluid" />
+              <img src={img_url} alt={title} className="figure-img img-fluid rounded" />
               <p>Votes: {votes}</p>
-              <Link to={`/articles/${article_id}`}>Read more</Link>
+              <Link to={`/articles/${article_id}`} className="btn btn-primary">
+                Read more
+              </Link>
             </div>
           </div>
         </div>

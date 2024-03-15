@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'; 
 import Homepage from '../components/Homepage'
@@ -17,6 +17,13 @@ function App() {
   const [selectTopic, setSelectTopic] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null);
+
+    useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
  return (
   <ErrContext.Provider value={{error,setError}}>
   <UserContext.Provider value={{user,setUser}}>

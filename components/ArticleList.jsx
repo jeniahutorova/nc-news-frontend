@@ -34,7 +34,7 @@ const ArticleList = ({selectTopic, setSelectTopic, isLoading, setIsLoading}) => 
         setSearchParams({topic : selectTopic, sortBy, sortOrder});
       };
     return(
-        <div>
+        <div className="container text-center">
             {isLoading ? (<p> Loading ...</p>) :
             (
                 <>

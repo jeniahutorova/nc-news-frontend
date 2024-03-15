@@ -4,16 +4,22 @@
     justify-content: space-around;
   }
   .custom-select {
-    padding: 8px 30px 8px 10px; /* Adjust padding as needed */
-    font-size: 16px; /* Adjust font size as needed */
-    border: 1px solid #ced4da; /* Bootstrap's default border color */
-    border-radius: 4px; /* Bootstrap's default border radius */
-    background-color: #fff; /* White background */
-    cursor: pointer; /* Show pointer cursor on hover */
+    padding: 8px 30px 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da; 
+    border-radius: 4px; 
+    background-color: #fff; 
+    cursor: pointer; 
   }
   
   .custom-select:focus {
-    border-color: #80bdff; /* Bootstrap's default focus color */
-    outline: 0; /* Remove default outline */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Bootstrap's default focus shadow */
+    border-color: #80bdff;
+    outline: 0; 
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      
+    }
   }

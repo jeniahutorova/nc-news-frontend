@@ -1,16 +1,22 @@
 import { UserContext } from "../context/User"
-import { useContext, useState } from "react"
+import { useContext} from "react"
+import { useEffect } from "react"
 const UserCard = ({username, name, img}) => {
     const{user, setUser} = useContext(UserContext)
-    const[signIn, setSignIn] = useState(false)
-    
-    const handleSignIn = () => {
-        if(!signIn){
-            setUser({...user, username: username, name: name, avatar_url: img})
-        } else {
-            setUser({...user, username: "", name : "", avatar_url: ""})
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
         }
-        setSignIn(!signIn)
+      }, [setUser]);
+    const handleSignIn = () => {
+        const newUser = {...user, username: username, name: name, avatar_url: img}
+        setUser(newUser)
+        localStorage.setItem("user", JSON.stringify(newUser));
+    }
+    const handleSignOut = () => {
+        setUser({...user, username: "", name : "", avatar_url: ""})
+        localStorage.removeItem("user");
     }
     
 return(
@@ -19,7 +25,11 @@ return(
         <div className="card-body">
             <p className="card-title">{username}</p>
             <p className="card-text">{name}</p>
-            <button className="btn btn-primary" onClick={handleSignIn}>{signIn ? "Sign out" : "Sign in" }</button>
+            {user.username === username ? (
+          <button className="btn btn-primary" onClick={handleSignOut}>Sign out</button>
+        ) : (
+          <button className="btn btn-primary" onClick={handleSignIn}>Sign in</button>
+        )}
             {user.username === username && (<p> You are logged in as {username}!</p>)}
         </div>
   </div>
