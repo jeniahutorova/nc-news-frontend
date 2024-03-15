@@ -13,9 +13,10 @@ useEffect(()=> {
 return(
     <div>
     <select 
+    className="custom-select" 
     value={selectTopic} 
     onChange={handleTopicChange}>
-        <option value=""></option>
+        <option value="">All</option>
         {topics.map((topic, index) => (
             <option key={index} value={topic.slug}>{topic.slug}</option>
     ))}
