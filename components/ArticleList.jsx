@@ -5,9 +5,8 @@ import Topic from "./Topic";
 import Sort from "./Sort";
 import { useSearchParams } from 'react-router-dom';
 
-const ArticleList = ({selectTopic, setSelectTopic}) => {
+const ArticleList = ({selectTopic, setSelectTopic, isLoading, setIsLoading}) => {
     const [articles, setArticles] = useState([]);
-    const [isLoading, setIsLoading] = useState(false)
     const [sortBy, setSortBy] = useState("comment_count");
     const [sortOrder, setSortOrder] = useState("asc");
     const [searchParams, setSearchParams] = useSearchParams();
