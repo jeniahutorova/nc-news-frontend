@@ -4,7 +4,7 @@ Welcome to Nc-news! This is a brief description of what the project is and how t
 
 ## Deployed Version
 
-You can find the deployed version of the project [here](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app/articles](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app).
+You can find the deployed version of the project [here](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app).
 
 ## About
 
