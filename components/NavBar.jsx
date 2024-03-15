@@ -1,32 +1,51 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../context/User';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../context/User";
+import { Avatar, AppBar, Toolbar, Typography, Button } from "@mui/material";
 const NavBar = () => {
-    const {user} = useContext(UserContext)
-return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container">
-        <div className="navbar-brand">
-            <Link to="/">Home</Link>
-        </div>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/articles">Articles</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/users">Users</Link>
-                </li>
-                {user.username && ( 
-                    <p className="nav-item">{user.username}</p>
-                )}
-            </ul>
-        </div>
-    </div>
-</nav>
-)
-}
-export default NavBar
+  const { user } = useContext(UserContext);
+  return (
+    <AppBar position="sticky" style={{ backgroundColor: "#223581" }}>
+      <Toolbar>
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            marginRight: "auto",
+          }}
+        >
+          Home
+        </Typography>
+        <Button
+          color="inherit"
+          component={Link}
+          to="/articles"
+          style={{ textDecoration: "none", marginRight: "10px" }}
+        >
+          Articles
+        </Button>
+
+        <>
+          <Link
+            to="/users"
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Avatar
+              alt={user.name}
+              src={user.avatar_url}
+              style={{ marginLeft: "10px", cursor: "pointer" }}
+            />
+          </Link>
+        </>
+      </Toolbar>
+    </AppBar>
+  );
+};
+export default NavBar;

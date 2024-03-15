@@ -1,15 +1,14 @@
 import { UserContext } from "../context/User"
 import { useContext, useState } from "react"
-
 const UserCard = ({username, name, img}) => {
     const{user, setUser} = useContext(UserContext)
     const[signIn, setSignIn] = useState(false)
     
     const handleSignIn = () => {
         if(!signIn){
-            setUser({...user, username: username})
+            setUser({...user, username: username, name: name, avatar_url: img})
         } else {
-            setUser({...user, username: ""})
+            setUser({...user, username: "", name : "", avatar_url: ""})
         }
         setSignIn(!signIn)
     }
