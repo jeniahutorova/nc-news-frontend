@@ -4,11 +4,11 @@ Welcome to Nc-news! This is a brief description of what the project is and how t
 
 ## Deployed Version
 
-You can find the deployed version of the project [here](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app/articles).
+You can find the deployed version of the project [here](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app/articles](https://65f428091bcfa47d2e7c4d28--news-nc-news.netlify.app).
 
 ## About
 
-NC-news is a web application that allows users to log in, search through articles, choose a topic, sort by date and amount of comments in ascending or a descending order as well as vote, leave a comment ant delete commentby a user. It was built using [React].
+NC-news is a web application that allows users to log in, search through articles, choose a topic, sort by date and amount of comments in ascending or descending order as well as vote, leave a comment, and delete a comment by a user. It was built using React.
 
 ## Backend Repository
 
